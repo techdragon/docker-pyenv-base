@@ -10,4 +10,7 @@ apt-get install -y --no-install-recommends libbz2-dev && \
 apt-get install -y --no-install-recommends libsqlite3-dev && \
 apt-get build-dep -y --no-install-recommends python
 RUN ["/bin/bash", "-c", "curl -k -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash"]
+RUN ["/bin/bash", "-c", "echo \"export PATH=\"$HOME/.pyenv/bin:$PATH\"\" >> /root/.bash_profile"]
+RUN ["/bin/bash", "-c", "echo \"eval \"$(pyenv init -)\"\" >> /root/.bash_profile"]
+RUN ["/bin/bash", "-c", "echo \"eval \"$(pyenv virtualenv-init -)\"\" >> /root/.bash_profile"]
 RUN ["/bin/bash", "-c", "/root/.pyenv/bin/pyenv install --list"]
