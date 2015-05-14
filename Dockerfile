@@ -1,5 +1,7 @@
 FROM ubuntu
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update && \
 apt-get install -y --no-install-recommends curl git mercurial && \
 apt-get build-dep -y python2.7 python3.4
