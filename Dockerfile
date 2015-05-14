@@ -11,8 +11,11 @@ ENV DEBIAN_FRONTEND noninteractive
 # RUN echo 'Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/docker-gzip-indexes
 
 RUN apt-get update && \
-apt-get install -y --no-install-recommends curl ca-certificates git mercurial && \
-apt-get build-dep -y python2.7 python3.4
+apt-get install -y --no-install-recommends curl ca-certificates && \
+apt-get install -y git && \
+apt-get install -y mercurial && \
+apt-get build-dep -y python2.7 && \
+apt-get build-dep -y python3.4
 
 RUN curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
 
