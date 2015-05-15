@@ -15,10 +15,11 @@ apt-get install -y --no-install-recommends libsqlite3-dev
 # apt-get build-dep -n --no-install-recommends python3.4
 
 RUN ["/bin/bash", "-c", "curl -k -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash"]
-RUN ["/bin/bash", "-c", "echo \"export PYENV_ROOT=\"$HOME/.pyenv\"\" >> /root/.bash_profile"]
-RUN ["/bin/bash", "-c", "echo \"export PATH=\"$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH\"\" >> /root/.bash_profile"]
-RUN ["/bin/bash", "-c", "echo 'eval "$(pyenv init -)"' >> /root/.bash_profile"]
-RUN ["/bin/bash", "-c", "echo 'eval "$(pyenv virtualenv-init -)"' >> /root/.bash_profile"]
+ADD profile.bash /root/.bash_profile
+# RUN ["/bin/bash", "-c", "echo \"export PYENV_ROOT=\"$HOME/.pyenv\"\" >> /root/.bash_profile"]
+# RUN ["/bin/bash", "-c", "echo \"export PATH=\"$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH\"\" >> /root/.bash_profile"]
+# RUN ["/bin/bash", "-c", "echo 'eval "$(pyenv init -)"' >> /root/.bash_profile"]
+# RUN ["/bin/bash", "-c", "echo 'eval "$(pyenv virtualenv-init -)"' >> /root/.bash_profile"]
 RUN ["/bin/bash", "-c", "/root/.pyenv/bin/pyenv update"]
 RUN ["/bin/bash", "-c", "pyenv install --list"]
 # RUN ["/bin/bash", "-c", "/root/.pyenv/bin/pyenv install --list"]
